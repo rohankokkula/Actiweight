@@ -285,9 +285,7 @@ elif(selected_act=="Softplus Function"):
     plt.yticks(np.arange(-0.5, 5.5, step=0.5))
     st.pyplot()
     st.markdown(f"""<h1 style='text-align: center;'>{selected_act}</h1>
-                <h2>The softplus function is similar to the ReLU function, but it is relatively smooth. It is unilateral suppression like ReLU.<br><br>
-                Swish is a new, self-gated activation function discovered by researchers at Google.<br><br>
-                Swish's design was inspired by the use of sigmoid functions for gating in LSTMs and highway networks.<br><br> We use the same value for gating to simplify the gating mechanism, which is called self-gating.</h2>""", unsafe_allow_html=True)
+                <h2>The softplus function is similar to the ReLU function, but it is relatively smooth. It is unilateral suppression like ReLU.<br><br></h2>""", unsafe_allow_html=True)
     options = st.radio("",('Advantages', 'Disadvantages'))
     if(options=="Advantages"):
         st.markdown("""<li>It only requires a simple scalar input, while normal gating requires multiple scalar inputs. This replaces activation functions that take a single scalar as input (such as ReLU) without changing the hidden capacity or number of parameters.</li>
