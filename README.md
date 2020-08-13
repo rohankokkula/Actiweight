@@ -5,7 +5,7 @@
 ## Steps to run on localhost:
 1. Clone this repository and enter into its directory
 2. pip install -r requirements.txt
-3. streamlit run actiweight.py
+3. Open terminal and type streamlit run actiweight.py
 
 ## Steps to run on heroku:
 1. Add these files to your github repo.
