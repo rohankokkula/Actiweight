@@ -3,7 +3,7 @@
 <img align="center" src="actiweight.gif" width=700px>
 
 ## Steps to run on localhost:
-1. Clone this repository and enter into its directory
+1. Clone this repository and enter into its directory<br>
 Open terminal and enter
 2. `pip install -r requirements.txt`
 3. `streamlit run actiweight.py`
