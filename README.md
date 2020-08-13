@@ -1,6 +1,7 @@
 # Actiweight
 ## An Interactive WebAPP to build intuitive learning for Neural Network Activation Functions.
 <img align="center" src="actiweight.gif" width=700px>
+
 ## Steps to run on localhost:
 1. Clone this repository and enter into its directory
 2. pip install -r requirements.txt
