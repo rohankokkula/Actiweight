@@ -46,12 +46,11 @@ if(selected_act=="What are Activation Functions?"):
     <h1>Why derivative/differentiation is used ?</h1>
     When updating the curve, to know in which direction and how much to change or update the curve depending upon the slope.<br><br>
     That is why we use differentiation in almost every part of Machine Learning and Deep Learning.</h2>""", unsafe_allow_html=True)
-    st.markdown("""""", unsafe_allow_html=True)
 elif(selected_act=="Sigmoid / Logistic Function"):
-    st.sidebar.image('formulae/sigmoid.png',width=300)
-    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/50a861269c68b1f1b973155fa40531d83c54c562',width=300)
+    st.sidebar.image('formulae/sigmoid.png',width=230)
+    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/50a861269c68b1f1b973155fa40531d83c54c562',width=230)
     logistic = lambda h, beta: 1./(1 + np.exp(-beta * h))
-    st.sidebar.info("Note: x=sum(inputs*weights) + bias")
+    st.sidebar.info("Note: β is responsible for curve x=sum(inputs*weights) + bias")
     beta = st.sidebar.slider("Select value of β", -1, 25,1)
     plt.figure(figsize=(7,3.5))
     hvals = np.linspace(-5, 5)
@@ -80,14 +79,14 @@ elif(selected_act=="Sigmoid / Logistic Function"):
         <li>Function performs exponential operations, which is <b>slower</b> for computers.</li>""", unsafe_allow_html=True)
 
 elif(selected_act=="Hyperbolic Tangent Function"):
-    st.sidebar.image('formulae/tanh.png',width=300)
-    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/b371c445bf1130914d25b1995d853ac0e27bc956',width=200)
+    st.sidebar.image('formulae/tanh.png',width=230)
+    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/b371c445bf1130914d25b1995d853ac0e27bc956',width=230)
     plt.figure(figsize=(7,3.5))
     hyperbolic_tangent = lambda h: (np.exp(h) - np.exp(-h)) / (np.exp(h) + np.exp(-h))
+    st.sidebar.info("Note: θ is responsible for curve x=sum(inputs*weights) + bias")
     theta = st.sidebar.slider("Select value of θ", -1, 25,1)
     hvals = np.linspace(-5, 5)
     plt.plot(hvals, hyperbolic_tangent(hvals*theta),"r",markersize=3,linewidth=1)
-    st.sidebar.info("Note: x=sum(inputs*weights) + bias")
     tan = st.sidebar.slider("Select value of x", -5, 5,1)
     v=hyperbolic_tangent(tan*theta)
     plt.plot(tan, v,'go', markersize=5)
@@ -112,8 +111,8 @@ elif(selected_act=="Hyperbolic Tangent Function"):
         <li>Function performs exponential operations, which is <b>slower</b> for computers.</li>""", unsafe_allow_html=True)
 
 elif(selected_act=="Rectified Linear Unit"):
-    st.sidebar.image('formulae/relu.png',width=300)
-    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/e8723cef7eb5dedf4aa20e174ee281b76a6cbec4',width=300)
+    st.sidebar.image('formulae/relu.png',width=230)
+    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/e8723cef7eb5dedf4aa20e174ee281b76a6cbec4',width=230)
     st.sidebar.info("Note: x=sum(inputs*weights) + bias")
     x = np.linspace(0, 10)
     plt.figure(figsize=(5,3))
@@ -180,11 +179,12 @@ elif(selected_act=="Parametric Rectified Linear Unit"):
     st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/387a2af979ccc6a29b62950e1efb7c3a86209ad7',width=300)
     st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/51480bf026d4e3149f7c815fda04940663894791',width=300)
     plt.figure(figsize=(7,4))
+    st.sidebar.info("Note: α is a linear multiplier x=sum(inputs*weights) + bias")
     y = st.sidebar.slider("Select value of x", -100, 10,-20)
     plt.plot([-60,30], [0,0],color="black",linewidth=0.5)
     plt.xticks(np.arange(-100,11, step=10))
     if(y<0):
-        alpha = st.sidebar.slider("Select value of Alpha", 0.01, 1.0,0.4,step=0.1)
+        alpha = st.sidebar.slider("Select value of α", 0.01, 1.0,0.4,step=0.1)
         new=alpha*y
         plt.plot([y,0], [new,0],'r')
         plt.plot([0,0], [-30,10],color="black",linewidth=0.5)
@@ -198,8 +198,8 @@ elif(selected_act=="Parametric Rectified Linear Unit"):
         st.sidebar.markdown(f"## Output: {y}")
         st.pyplot()
     st.markdown(f"""<h1 style='text-align: center;'>{selected_act}</h1>
-                <h2>The idea of leaky ReLU can be extended even further. Instead of multiplying x with a constant term we can multiply it with a hyper-parameter which seems to work better the leaky ReLU.<br><br>
-                 Inshort, replace 0.01 with &alpha; which could be the learnable parameter for backpropagation.<br><br>
+                <h2>The idea of leaky ReLU can be extended even further. Instead of multiplying x with a constant term we can multiply it with a hyper-parameter which seems to work better than the leaky ReLU.<br><br>
+                Inshort, replace 0.01 with &alpha; which could be the learnable parameter for backpropagation.<br><br>
                 In the negative region, PReLU has a small slope, which can also avoid the problem of ReLU death.<br> Compared to ELU, PReLU is a linear operation in the negative region. <br><br>Although the slope is small, it does not tend to 0, which is a certain advantage.</h2>""", unsafe_allow_html=True)
     options = st.radio("",('Advantages', 'Disadvantages'))
     if(options=="Advantages"):
@@ -209,10 +209,11 @@ elif(selected_act=="Parametric Rectified Linear Unit"):
                     <li>Same as Leaky ReLU</li>""", unsafe_allow_html=True)
 
 elif(selected_act=="Exponential Linear Unit"):
-    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/5d740c6ed2015b0208a6945e53f10d89c11855b3',width=300)
-    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/ad31fcdb29df53296c148a3af5c1b66bc7317a90',width=300)
-    plt.figure(figsize=(7,4))
+    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/5d740c6ed2015b0208a6945e53f10d89c11855b3',width=270)
+    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/ad31fcdb29df53296c148a3af5c1b66bc7317a90',width=270)
+    st.sidebar.info("α is a linear multiplier to exponent x=sum(inputs*weights) + bias")
     y = st.sidebar.slider("Input Value", -100, 10,-15)
+    plt.figure(figsize=(7,4))
     plt.plot([-60,30], [0,0],color="black",linewidth=0.5)
     if(y<0):
         alpha = st.sidebar.slider("Alpha Value", 1, 5,2)
@@ -230,19 +231,20 @@ elif(selected_act=="Exponential Linear Unit"):
         st.sidebar.markdown(f"## Output: {y}")
     st.pyplot()
     st.markdown(f"""<h1 style='text-align: center;'>{selected_act}</h1>
-                <h2>ELU is proposed to solve the problems of ReLU. Due to exponent nature for negative inputs, the multiplier(&alpha;) is not seen in this case.</h2>""", unsafe_allow_html=True)
+                <h2>ELU is proposed to solve the problems of ReLU. Due to exponent nature for negative inputs, the linear multiplier(&alpha;) is not seen in this case which increases room for more output values.</h2>""", unsafe_allow_html=True)
     options = st.radio("",('Advantages', 'Disadvantages'))
     if(options=="Advantages"):
         st.markdown("""<li>No Dead ReLU issues.</li>
-                    <li>The mean of the output is close to 0, zero-centered.</li>""", unsafe_allow_html=True)
+                    <li>The mean of the output is close to 0, <b>zero-centered.</b></li>""", unsafe_allow_html=True)
     if(options=="Disadvantages"):
         st.markdown("""<li>One small problem is that it is slightly more computationally intensive for negative values.</li>
-                    <li>Same as Leaky ReLU</li>""", unsafe_allow_html=True)
+                    <li>Same as ReLU</li>""", unsafe_allow_html=True)
 
 elif(selected_act=="Swish Function"):
-    st.sidebar.image('formulae/swish.png',width=300)
-    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/e1e28d510bf1a0d4f2ae34557bcd141dfa51063f',width=300)
+    st.sidebar.image('formulae/swish.png',width=230)
+    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/e1e28d510bf1a0d4f2ae34557bcd141dfa51063f',width=230)
     logistic = lambda h, beta: 1./(1 + np.exp(-beta * h))
+    st.sidebar.info("Note: β is responsible for curve x=sum(inputs*weights) + bias")
     beta = st.sidebar.slider("Select value of β", -1, 25,1)
     plt.figure(figsize=(7,3.5))
     hvals = np.linspace(-5, 5)
@@ -275,6 +277,7 @@ elif(selected_act=="Softplus Function"):
     plt.figure(figsize=(7,3.5))
     hvals = np.linspace(-5, 5)
     plt.plot(hvals, soft(hvals),"r",markersize=3,linewidth=1)
+    st.sidebar.info("Note: x=sum(inputs*weights) + bias")
     log = st.sidebar.slider("Select value of x", -5.0, 5.0,0.5)
     v=soft(log)
     plt.plot(log, v,'go', markersize=5)
@@ -295,43 +298,50 @@ elif(selected_act=="Softplus Function"):
                     <li>Same as ReLU</li>""", unsafe_allow_html=True)
 
 elif(selected_act=="Maxout Function"):
-    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/eeda24441c3129f46adeeac876c6fe3dfffb73c9',width=300)
-    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/d714c47a3ff98f762d446f179d886ceab52ead4e',width=300)
-    inputs =  np.array(st.sidebar.multiselect('Insert inputs',np.arange(1,5)))
+    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/eeda24441c3129f46adeeac876c6fe3dfffb73c9',width=230)
+    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/d714c47a3ff98f762d446f179d886ceab52ead4e',width=230)
+    inputs =  np.array(st.sidebar.multiselect('Insert inputs',np.arange(0,5)))
+    slot=st.sidebar.empty()
     weights = np.array(st.sidebar.multiselect('Insert respective weights',np.arange(-5,5)))
     bias= np.array(st.sidebar.selectbox('Insert respective bias',np.arange(-2,2)))
-    st.markdown(f"## input: {inputs}")
-    st.markdown(f"## weights: {weights}")
-    st.markdown(f"## bias: {bias}")
+    for i in range(len(inputs)):
+        try:
+            text1=f"X<sub>{str(i+1)}</sub> = {str(inputs[i])}"
+            text2=f"W<sub>{str(i+1)}</sub> = {str(weights[i])}"
+            st.markdown(f"""### {text1},    {text2}""", unsafe_allow_html=True)
+        except IndexError as e:
+            slot.warning("Please add equal values")
+    st.markdown(f"""### Bias = {bias}""", unsafe_allow_html=True)
+    st.markdown(f"## Calculated inputs to Maxout")
+    st.markdown(f"# i<sub>m</sub> = X<sub>m</sub> * W<sub>m</sub> + Bias", unsafe_allow_html=True)
+    
     if(len(inputs)==len(weights)!=0):
-        maxout=max(inputs*weights+bias)
-        st.markdown(f"## {np.dot(inputs,weights)+bias}")
-        st.markdown(f"# Maxout output: {maxout}")
-    else:
-        st.sidebar.warning("Please add equal values")
+        inp=inputs*weights+bias
+        for i in range(len(inputs)):
+            st.markdown(f"# i<sub>{i+1}</sub> = {inp[i]}", unsafe_allow_html=True)
+        st.markdown(f"# Maxout output: {max(inp)}")
     st.markdown(f"""<h1 style='text-align: center;'>{selected_act}</h1>
                 <h2>The Maxout activation is a generalization of the ReLU and the leaky ReLU functions.<br> It is a learnable activation function.<br><br>
                 Notice that both ReLU and Leaky ReLU are a special case of this form (for example, for ReLU we have w1,b1 =0).<br><br>The Maxout neuron therefore enjoys all the benefits of a ReLU unit (linear regime of operation, no saturation) and does not have its drawbacks.<br><br>
                 Maxout can be seen as adding a layer of activation function to the deep learning network, which contains a parameter k.<br><br> Compared with ReLU, sigmoid, etc., this layer is special in that it adds k neurons and then outputs the largest activation value.<br><br> We use the same value for gating to simplify the gating mechanism, which is called self-gating.</h2>""", unsafe_allow_html=True)
 
 elif(selected_act=="SoftMax Function"):
-    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/6d7500d980c313da83e4117da701bf7c8f1982f5',width=300)
-    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/81a8feb8f01aaed053c103113e3b4917f936aef0',width=300)
-    st.sidebar.info("Note: x=sum(inputs*weights) + bias")
+    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/6d7500d980c313da83e4117da701bf7c8f1982f5',width=230)
+    st.sidebar.image('https://wikimedia.org/api/rest_v1/media/math/render/svg/81a8feb8f01aaed053c103113e3b4917f936aef0',width=230)
+    st.sidebar.info("Note: x=sum(inputs*weights) + bias  P = Probability of x")
     number = st.sidebar.multiselect('Insert value of x',np.arange(-5,10))
-    st.sidebar.markdown(f"#### Input to SoftMax Function")
-    st.sidebar.markdown(f"# {number}")
     plt.figure(figsize=(7,4))
     softmax = lambda a: np.exp(a) / np.sum(np.exp(a))
     z=softmax(sorted(number))
-    plt.plot(sorted(number), z,'bo',linewidth=0.5,markersize=5)
+    for i in range(len(z)):
+        st.sidebar.markdown(f"""X<sub>{i+1}</sub> = {np.round(number[i], decimals=3)} P<sub>{i+1}</sub> = {np.round(z[i], decimals=3)}""", unsafe_allow_html=True)
+    plt.bar(number,z)
     plt.plot([-5,10], [0,0],color="black",linewidth=0.3)
-    plt.plot([0,0], [1,-0.1],color="black",linewidth=0.3)
-    plt.xticks(np.arange(-5, 11, step=1))
     plt.yticks(np.arange(0, 1.1, step=0.1))
+    plt.xticks(np.arange(-5, 11, step=1))
     st.pyplot()
     st.markdown(f"""<h1 style='text-align: center;'>{selected_act}</h1>
-                <h2>Softmax function calculates the probabilities distribution of the event over 'n' different events.<br><br>
+                <h2>Softmax function calculates the <b>probabilities</b> distribution of the event over 'n' different events.<br><br>
                 It takes as input a vector z of K real numbers, and normalizes it into a probability distribution consisting of K probabilities proportional to the exponentials of the input numbers. <br><br>
                 That is, prior to applying softmax, some vector components could be negative, or greater than one; and might not sum to 1;<br> but after applying softmax, each component will be in the interval (0,1) and the components will add up to 1, so that they can be interpreted as probabilities.<br><br>
                 Furthermore, the larger input components will correspond to larger probabilities.</h2>""", unsafe_allow_html=True)
