@@ -25,9 +25,9 @@ st.markdown(
 </style>
 """,
 unsafe_allow_html=True)
-st.markdown("""<h1 style='text-align: center;margin-top:-110px;font-family: montserrat;font-size:50px;'>ACTIWEIGHT</h1><h3 style='text-align: center;margin-top:-25px;font-family: montserrat;'>Created by: <a href='https://in.linkedin.com/in/rohankokkula'><b>Rohan Kokkula<a href="https://in.linkedin.com/in/rohankokkula" target="_blank">
+st.markdown("""<h1 style='text-align: center;margin-top:-110px;font-family: montserrat;font-size:50px;'>ACTIWEIGHT</h1><h3 style='text-align: center;margin-top:-25px;font-family: montserrat;'>Created by: <a href='https://in.linkedin.com/in/rohankokkula'><b>Rohan Kokkula.<a href="https://in.linkedin.com/in/rohankokkula" target="_blank">
   <img align="right" alt="Rohan Kokkula | Twitter" width="22px" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/linkedin.svg" />
-</a></b></a>.</h3>""", unsafe_allow_html=True)
+</a></b></a></h3>""", unsafe_allow_html=True)
 st.sidebar.markdown("<h1 style='text-align: center;' >Select Function</h1>", unsafe_allow_html=True)
 selected_act = st.sidebar.selectbox('', ("What are Activation Functions?","Sigmoid / Logistic Function","Hyperbolic Tangent Function","Rectified Linear Unit","Leaky Rectified Linear Unit","Parametric Rectified Linear Unit","Exponential Linear Unit","Swish Function","SoftMax Function","Softplus Function","Maxout Function"))
 if(selected_act=="What are Activation Functions?"):
