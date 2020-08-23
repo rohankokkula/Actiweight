@@ -13,6 +13,7 @@ hide_streamlit_style = """
             </style>
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 st.markdown(
         f"""
 <style>
@@ -30,6 +31,7 @@ st.markdown("""<h1 style='text-align: center;margin-top:-110px;font-family: mont
 </a></b></a></h3>""", unsafe_allow_html=True)
 st.sidebar.markdown("<h1 style='text-align: center;' >Select Function</h1>", unsafe_allow_html=True)
 selected_act = st.sidebar.selectbox('', ("What are Activation Functions?","Sigmoid / Logistic Function","Hyperbolic Tangent Function","Rectified Linear Unit","Leaky Rectified Linear Unit","Parametric Rectified Linear Unit","Exponential Linear Unit","Swish Function","SoftMax Function","Softplus Function","Maxout Function"))
+st.sidebar.video('https://youtu.be/2vk9lQuX_1Q') 
 if(selected_act=="What are Activation Functions?"):
     st.image("formulae/intro.gif")
     st.markdown(f"""<h1 style='text-align: center;'>What are Activation Functions?</h1>
@@ -107,7 +109,6 @@ elif(selected_act=="Hyperbolic Tangent Function"):
     if(options=="Disadvantages"):
         st.markdown("""<li><b>Vanishing gradient</b> - for very high or very low values of X, there is almost no change to the prediction, causing a vanishing gradient problem.</li>
         <li>Due to vanishing gradient problem, sigmoids have <b>slow convergence.</b></li>
-        <li>Function output is <b>not zero-centered</b>, which will reduce the efficiency of weight update.</li>
         <li>Function performs exponential operations, which is <b>slower</b> for computers.</li>""", unsafe_allow_html=True)
 
 elif(selected_act=="Rectified Linear Unit"):
@@ -216,7 +217,7 @@ elif(selected_act=="Exponential Linear Unit"):
     plt.figure(figsize=(7,4))
     plt.plot([-60,30], [0,0],color="black",linewidth=0.5)
     if(y<0):
-        alpha = st.sidebar.slider("Alpha Value", 1, 5,2)
+        alpha = st.sidebar.slider("α Value", 1, 5,2)
         new=alpha*(np.exp(y)-1)
         plt.plot([0,0], [-5,10],color="black",linewidth=0.5)        
         x=np.linspace(y, 0, 100)
